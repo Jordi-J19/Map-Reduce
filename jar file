@@ -1,0 +1,5 @@
+gsutil ls -r gs://dummy_j/
+
+hadoop jar /usr/lib/hadoop/hadoop-streaming-*.jar -files gs://dummy_j/map.py,gs://dummy_j/reduce.py,gs://dummy_j/vector.txt -input gs://dummy_j/matrix.txt -output gs://dummy_j/out -mapper "python map.py" -reducer "python reduce.py"
+
+gsutil cat gs://dummy_j/out/*
